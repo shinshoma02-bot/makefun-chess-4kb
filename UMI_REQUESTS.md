@@ -28,3 +28,9 @@ make.fun の賞金課題（バウンティ）への提出物を制作する。�
 - この R1 に「対応済み」と日付を付ける
 - README に仕様（探索方法・バイト数・検証結果）を書く
 - make.fun アカウントは @clever-coyote-75（GitHub shinshoma02-bot 連携済み）
+
+### R1 進捗ログ
+- 2026-11-18 着手。brief/skill.md/kit 確認済み（締切表記 11/24 17:00 UTC = 11/25 02:00 JST で一致）。
+- v0: sunfish風の自作エンジン（TT・null move・静止探索・固定ノード数 L）。ローカル env（kit の program/env）で練習3局面を検証中。現状 練習Elo 約1,100（目標 1,154 以上、sunfish 超えは約1,365）。main.py は 2.9KB 程度で 4,096B 以内。
+- 注意: 提出リポジトリ全体 ≤8,192B / 各ファイル ≤4,096B（LICENSE・README含む）。本リポジトリの UMI_REQUESTS.md はそれ自体が約2KB以上あるため、提出用には別リポジトリ（または最小ファイル構成）が必要かもしれない → てん/真さん要判断。
+- transcript は未保存。提出前に kit の `makefun bundle` で作成し transcript/ に置く必要あり（record は作業開始前に起動が必要なため要確認）。
