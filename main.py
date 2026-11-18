@@ -6,7 +6,7 @@ V=dict(P=100,N=320,B=330,R=500,Q=900,K=0)
 M=30000
 Z={}
 H=set()
-L=40000
+L=80000
 T={'.':[0]*120,' ':[0]*120}
 for u in V:
  t=[]
@@ -15,7 +15,11 @@ for u in V:
   t+=[V[u]+((7-r)*5+d*3 if u=='P' else d*{'N':10,'B':5,'Q':2,'K':-6}.get(u,0))]
  T[u]=t;T[u.lower()]=[-t[119-i]for i in range(120)]
 def ev(b):
- return sum(T[q][i]for i,q in enumerate(b))
+ e=sum(T[q][i]for i,q in enumerate(b))
+ if b.count('.')>50:
+  for q,z in('K',1),('k',-1):
+   i=b.index(q);r=i//10-2;c=i%10-1;e+=z*(min(r,7-r)+min(c,7-c))*30
+ return e
 def gen(b):
  for i,q in enumerate(b):
   if q<'A'or q>'Z':continue
@@ -31,10 +35,16 @@ def gen(b):
     yield i,j
     if q in'PNK'or t!='.':break
     j+=d
+  if q=='K'and i in(94,95):
+   for s in(1,-1):
+    r=i+(3 if(i==95)==(s==1)else 4)*s
+    if b[r]=='R'and all(b[x]=='.'for x in range(i+s,r,s)):yield i,i+2*s
 def mk(b,i,j):
  q=b[i]
  if q=='P'and j<30:q='Q'
  l=list(b);l[j]=q;l[i]='.'
+ if q=='K'and abs(j-i)==2:
+  s=(j-i)//2;l[j+s if b[j+s]=='R'else j+2*s]='.';l[i+s]='R'
  return''.join(l)[::-1].swapcase()
 class X(Exception):0
 def srch(b,d,a,c):
