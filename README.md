@@ -13,6 +13,7 @@ make.fun bounty tiny-chess-01: a chess engine in at most 4,096 bytes of Python.
 |---|---|---|
 | previous main.py (200k nodes, no LMR) | 1364 / 1451 / 1451 | 1422 |
 | current main.py (400k nodes, LMR) | 1654 / 1451 / 2112 | 1739 |
+| tested, not adopted (500k nodes, LMR) | 1545 / 1451 / 2112 | 1703 |
 
 Measured with the kit's env server and the rules' Elo formula (the docker grader is not available here, so the bot was run as a plain python3.13 process against the kit env).
 
